@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choisir un Véhicule</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <style>
+        body {
+            width: 500px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .label {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="section">
+        <div class="container">
+            <h1 class="title">Génération de PDF</h1>
+            <form action="/submit" method="post" id="vehicleForm">
+                <div class="field">
+                    <label class="label">Liste des véhicules</label>
+                    <div class="control">
+                        <div class="select is-fullwidth">
+                            <select name="vehicule" id="vehicleDropdown">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button class="button is-primary">Soumettre</button>
+                    </div>
+                </div>
+            </form>
+            <div class="box mt-5" id="downloadBox" style="display: none;">
+                <h2 class="subtitle">Le PDF a bien été généré</h2>
+                <a id="downloadLink" href="#" class="button is-info">Télécharger</a>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

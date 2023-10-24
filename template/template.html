@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Template</title>
+    <style>
+        body,
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 35px;
+        }
+
+        h5,
+        p,
+        ul {
+            margin-top: 0;
+        }
+
+        h5 {
+            font-weight: lighter;
+            color: #375A98;
+            margin-bottom: 5px;
+        }
+
+        body>div:not(:last-child) {
+            page-break-after: always;
+        }
+
+        #vehicule-desc {
+            text-align: center;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        li a,
+        .page {
+            font-size: 23px;
+            color: #0361C1;
+        }
+
+        .page {
+            position: absolute;
+            right: 0;
+            margin-top: 10px;
+            font-size: 20px;
+            color: black;
+        }
+
+        div {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        div:not(#vehicule-desc) p {
+            font-size: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        thead {
+            background-color: #D9D9D9;
+            text-align: left;
+        }
+
+        th,
+        td {
+            font-weight: normal;
+            border: 1px solid black;
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Description du Véhicule -->
+    <div id="vehicule-desc">
+        <h3>Liste des incidents du véhicule</h3>
+        <p>{{vehicule.desc}}</p>
+    </div>
+    <!-- Table des Matières -->
+    <div id="tableDesMatieres">
+        <h5>Table des matières</h5>
+        <ul>
+            <li><a href="#resume">Résumé</a> <span class="page">{{ resume_page }}</span></li>
+            <li><a href="#incidents">Liste des incident et status des incidents</a> <span class="page">{{ incidents_page
+                    }}</span></li>
+            <li><a href="#incidents-details">Liste des détaillé des incidents</a> <span class="page">{{
+                    incidents_details_page }}</span></li>
+            <ul>
+                {% for post in vehicule.posts_distinct %}
+                <li><a href="#{{post[1]}}">Poste de travail {{post[1]}}</a> <span class="page">{{
+                        pages_per_post[post[1]] }}</span></li>
+                {% endfor %}
+            </ul>
+        </ul>
+    </div>
+    <!-- Section Résumé -->
+    <div id="resume">
+        <h5>Résumé</h5>
+        <p>Ce rapport a pour but d’informer sur
+            la liste des incidents des incidents déclarés sur le véhicule {{vehicule.desc}}.</p>
+        <p>{{ vehicule.incidents|length }} incident ont été trouvés sur le véhicule</p>
+    </div>
+    <!-- Section Liste des Incidents -->
+    <div id="incidents">
+        <h5>Liste des incidents</h5>
+        <p>Le tableau ci-dessous montre la liste des incidents pour le véhicule {{vehicule.desc}}</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Description de l’incident</th>
+                    <th>Etat</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for incident in vehicule.incidents %}
+                <tr>
+                    <td>{{ incident[0] }}</td>
+                    <td>{{ incident[1] }}</td>
+                    {% if incident[2] == "OPEN" %}
+                    <td style="background-color: red;">{{ incident[2] }}</td>
+                    {% else %}
+                    <td style="background-color: green;">{{ incident[2] }}</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Section Détails des Incidents -->
+    <div id="incidents-details">
+        <h5>Liste détaillé des incidents</h5>
+        <p>Ce chapitre contient la liste des incidents déclarés par poste de travail</p>
+        {% for post in vehicule.posts_distinct %}
+        <div id="{{post[1]}}">
+            <h5>Poste de travail {{post[0]}}</h5>
+            <p>Le tableau ci-dessous montre la liste des incidents déclarés sur le poste de travail {{post[1]}} pour le
+                véhicule {{vehicule.desc}} :</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>OT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for incident in vehicule.posts %}
+                    {% if incident[2] == post[0] %}
+                    <tr>
+                        <td>{{ incident[0] }}</td>
+                        <td>{{ incident[1] }}</td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

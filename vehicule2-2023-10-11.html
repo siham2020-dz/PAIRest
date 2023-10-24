@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Template</title>
+    <style>
+        body,
+        html {
+            font-size: 35px;
+        }
+
+        div:not(:last-child) {
+            page-break-after: always;
+        }
+
+
+        #vehicule-desc {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="vehicule-desc">
+        <h3>Liste des incidents du véhicule</h3>
+        <p>vehicule2</p>
+    </div>
+    <div id="tableDesMatieres">
+        <h3>Table des matières</h3>
+        <ul>
+            <li><a href="#resume">Résumé</a>3</li>
+            <li><a href="#incidents">Liste des incident et status des incidents</a>4</li>
+            <li><a href="#incidents-details">Liste des détaillé des incidents</a>5</li>
+            
+                <li><a href="#poste1">Incidents du poste de travail 1</a></li>
+            
+                <li><a href="#poste3">Incidents du poste de travail 3</a></li>
+            
+        </ul>
+    </div>
+    <div id="resume">
+        <h3>Résumé</h3>
+        <p>Ce rapport a pour but d’informer sur
+            la liste des incidents des incidents déclarés sur le véhicule vehicule2.</p>
+        <p>4 ont été trouvés sur le véhicule</p>
+        </p>
+    </div>
+    <div id="incidents">
+        <h3>Liste des incidents</h3>
+        <p>Le tableau ci-dessous montre la liste des incidents pour le véhicule vehicule2</p>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Description de l’incident</th>
+                    <th>Etat</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    <td>2</td>
+                    <td>incident2_ordre2</td>
+                    
+                        <td style="background-color: red;">OPEN</td>
+                    
+                </tr>
+                
+                <tr>
+                    <td>3</td>
+                    <td>incident3_ordre2</td>
+                    
+                        <td style="background-color: red;">OPEN</td>
+                    
+                </tr>
+                
+                <tr>
+                    <td>4</td>
+                    <td>incident4_ordre4</td>
+                    
+                        <td style="background-color: red;">OPEN</td>
+                    
+                </tr>
+                
+                <tr>
+                    <td>5</td>
+                    <td>incident5_ordre4</td>
+                    
+                        <td style="background-color: red;">OPEN</td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    <div id="incidents-details">
+        <h3>Liste détaillé des incidents</h3>
+        <p>Ce chapitre contient la liste des incidents déclarés par poste de travail</p>
+        
+        <h3>Poste de travail 1</h3>
+        <p>Le tableau ci-dessous montre la liste des incidents déclarés sur le poste de travail 
+            poste1 pour le véhicule vehicule2 :</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>OT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        
+                            <tr>
+                                <td>2</td>
+                                <td>2</td>
+                            </tr>
+                        
+                    
+                        
+                            <tr>
+                                <td>3</td>
+                                <td>2</td>
+                            </tr>
+                        
+                    
+                        
+                    
+                        
+                    
+                </tbody>
+            </table>
+        
+        <h3>Poste de travail 3</h3>
+        <p>Le tableau ci-dessous montre la liste des incidents déclarés sur le poste de travail 
+            poste3 pour le véhicule vehicule2 :</p>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>OT</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                        
+                    
+                        
+                    
+                        
+                            <tr>
+                                <td>4</td>
+                                <td>4</td>
+                            </tr>
+                        
+                    
+                        
+                            <tr>
+                                <td>5</td>
+                                <td>4</td>
+                            </tr>
+                        
+                    
+                </tbody>
+            </table>
+        
+    </div>
+</body>
+
+</html>
